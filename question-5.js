@@ -19,3 +19,23 @@ const products = [
 
 const promotionCode = "";
 // เริ่มเขียนโค้ดตรงนี้
+
+function calculateTotalPrice (products, promotionCode){
+  let totalPrice = 0;
+  let finalPrice = 0;
+  for (let item of products){
+    totalPrice += (item.price*item.quantity);
+  }
+  if (promotionCode === "SALE20"){
+    finalPrice = totalPrice * 0.8;
+  }
+  else if (promotionCode === "SALE50"){
+    finalPrice = totalPrice * 0.5;
+  }
+  else {
+    finalPrice = totalPrice;
+  }
+  return finalPrice;
+}
+
+console.log (`ราคารวมหลังหักส่วนลด ${calculateTotalPrice (products, promotionCode)} บาท`)
